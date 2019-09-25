@@ -55,6 +55,10 @@ from matplotlib import cm
 from warnings import warn
 from hparams import hparams, hparams_debug_string
 
+import multiprocessing
+multiprocessing.set_start_method('spawn', True)
+
+
 global_step = 0
 global_epoch = 0
 use_cuda = torch.cuda.is_available()

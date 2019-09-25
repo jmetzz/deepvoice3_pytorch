@@ -27,6 +27,7 @@ import audio
 import torch
 import numpy as np
 import nltk
+import nltk.data
 
 # The deepvoice3 model
 from deepvoice3_pytorch import frontend
@@ -37,6 +38,7 @@ from tqdm import tqdm
 use_cuda = torch.cuda.is_available()
 device = torch.device("cuda" if use_cuda else "cpu")
 _frontend = None  # to be set later
+nltk.download('punkt')
 
 
 def tts(model, text, p=0, speaker_id=None, fast=False):

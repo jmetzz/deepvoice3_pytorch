@@ -235,7 +235,7 @@ def get_mask_from_lengths(memory, memory_lengths):
         memory: (batch, max_time, dim)
         memory_lengths: array like
     """
-    mask = memory.data.new(memory.size(0), memory.size(1)).byte().zero_()
+    mask = memory.data.new(memory.size(0), memory.size(1)).bool().zero_()
     for idx, l in enumerate(memory_lengths):
-        mask[idx][:l] = 1
+        mask[idx][:l] = True
     return ~mask
